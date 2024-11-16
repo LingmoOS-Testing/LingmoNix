@@ -76,9 +76,8 @@
       neovim
       vscode
       libreoffice
-      tmux
       just
-      steam
+      lynx
     ];
   };
 
@@ -90,12 +89,48 @@
     curl
     git
     gh
-    clash-meta
-    appimage-run
   ];
 
-  system.nixos.label = [ "linixos" ];
   nixpkgs.config.allowUnfree = true;
+  environment.etc."issue".text = ''
+  <<< Welcome to LingmoNix 1 "Yaksha"! >>>
+  A experimental project, Lingmo Software
+    
+  (C) 2024 Lingmo Software / LingmoNix Yaksha Project
+  Licensed under GPL-3.0 LICENSE
+  Nixpkgs licensed under MIT LICENSE
+
+  To get installation guide, please visit https://github.com/LingmoOS-Testing/LingmoNix/wiki#installation_guide
+  LingmoOS Website: www.lingmo.org
+
+  SYSTEM INFOMATION:
+  Current NixOS Version   24.05 Stable
+  Linux Kernel Version    6.6.52
+  Built at                16 Nov, 2024
+
+  "Yes, my liege :)." --Von Lycaon
+  ENJOY YOUR SYSTEM!
+'';
+ 
+  environment.etc."os-release".text = ''
+  ANSI_COLOR="1;34"
+  BUG_REPORT_URL="https://github.com/NixOS/nixpkgs/issues"
+  BUILD_ID="1-installer"
+  DOCUMENTATION_URL="https://nixos.org/learn.html"
+  HOME_URL="https://lingmo.org/"
+  ID=lingmoos
+  IMAGE_ID=""
+  IMAGE_VERSION=""
+  LOGO="nix-snowflake"
+  NAME=LingmoNix
+  PRETTY_NAME="LingmoNix 1 (Yaksha)"
+  SUPPORT_URL="https://nixos.org/community.html"
+  VARIANT_ID=installer
+  VERSION="1 (Yaksha)"
+  VERSION_CODENAME=yaksha
+  VERSION_ID="1.0"
+'';
+
   nix.settings.substituters = lib.mkForce [ "https://mirrors.ustc.edu.cn/nix-channels/store" ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
